@@ -1,5 +1,7 @@
-
-public class CallByValueBehaviourTest {
+//Java verwendet immer pass-by-value. 
+//Bei primitiven Datentypen wird der ganze Wert kopiert. Bei Objekten wird die Referenz kopiert.
+//Quelle: OCA Study Guide Java SE8 (S. 188)
+public class PassByValueBehaviourTest {
 	public static void main(String[] args) {
 		Reference originalObjectReference = new Reference();
 		TestClass testClass = new TestClass();
