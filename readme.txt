@@ -5,6 +5,7 @@ javac -encoding UTF-8 MyClassName.java
 Buch: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
+-logical and bitwise AND, OR 
 -package visibility and strange behaviour (im Buch die Stelle finden)
 -String: alle metthoden, concat, method chaining etc.
 -StringBuilder: alle OCA Methoden ausprobieren, auch chaining (substr vs append).
