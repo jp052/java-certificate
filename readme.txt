@@ -5,6 +5,10 @@ javac -encoding UTF-8 MyClassName.java
 Buch: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
+-varags
+-int array mit new operator ausprobieren (S. 173), arrays allgemein.
+-alles aus Kapitel 5 durchgehen
+-streaming
 -logical and bitwise AND, OR 
 -package visibility and strange behaviour (im Buch die Stelle finden)
 -String: alle metthoden, concat, method chaining etc.
@@ -14,8 +18,7 @@ ToDo's:
 -initialisatzion order (S.204)
 -immutable class schreiben
 -lambdas und predicates (S. 209-215)
--float verhalten mit und ohne f 
--alles aus Kapitel 5 durchgehen 
+-float verhalten mit und ohne f  
 -compiltetime runtime exception (S.289)
 -Exception beispiele coden. z.B wann wird welcher code nach exception ausgeführt (S.326 Frage7, Frage 8,10,11)
 
@@ -23,7 +26,7 @@ In Progress:
 -Java 8 Date mit Period
 
 Done:
-
+-protected behaviour
 
 ###Notes:###
 #start jdk docker:
