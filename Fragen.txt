@@ -1,0 +1,27 @@
+Welche zeichen darf eine Klasse enthalten?
+A: Wie methode, auch ein Zeichen ist möglich
+
+Wann wird eine hidden Methode aufgerufen?
+A: Es wird immer die vom Referenztyp aufgerufen.
+
+was passiert wenn main den falschen return typ hat?
+A: Ein Error zur Laufzeit wird geworfen.
+
+Was bedeutet invariant?
+A: unveränderlich
+
+Können lokale Variablen in einer if bedingung initialisiert werden?
+A: Nein, da der compiler keine Bedingung auswertet, die Variablen sind daher nicht initialisert.
+
+Wo können continout verwendet werden?
+A: while, do, for Schleife
+
+Welche Methoden hat String?
+A: 
+
+Kann einer float Variable ohne Probleme ein int zugewiesen werden?
+A: Nicht ohne Probleme, es kann einen Präzisionsverlust geben
+
+Ist folgendes erlaubt? if(false) ; else ;
+A: Ja, if else ohne Code und Klammer
+

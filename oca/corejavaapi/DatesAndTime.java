@@ -8,7 +8,8 @@ public class DatesAndTime {
 		dateTime.createLocalDateAndTime();
 		dateTime.manipulateDateAndTime();
 		dateTime.dateTimeToLong();
-		dateTime.dateTimeFormatting();
+		dateTime.dateTimeFormattingWithoutTimeZone();
+		dateTime.parseDateTime();
 	}
 	
 	private void createLocalDateAndTime() {
@@ -93,8 +94,8 @@ public class DatesAndTime {
 		//System.out.println("secondsSince1970: " + secondsSince1970);		
 	}
 	
-	private void dateTimeFormatting() {
-		System.out.println("\n dateTimeFormatting:");
+	private void dateTimeFormattingWithoutTimeZone() {
+		System.out.println("\n dateTimeFormattingWithoutTimeZone:");
 		
 		LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
 		System.out.println(date.getDayOfWeek()); //MONDAY
@@ -110,12 +111,12 @@ public class DatesAndTime {
 		System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
 		
 		//lesbare Formatter
-		DateTimeFormatter shortDateTime = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+		DateTimeFormatter shortDateTime = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT); //auch möglich: FormatStyle.MEDIUM
 		System.out.println(shortDateTime.format(dateTime)); // 1/20/20
 		System.out.println(shortDateTime.format(date)); // 1/20/20
 		
 		try {
-			System.out.println(shortDateTime.format(time)); // Time kann nicht als Date formatiert werden.
+			System.out.println(shortDateTime.format(time)); // Exception: Time kann nicht als Date formatiert werden.
 		} catch (UnsupportedTemporalTypeException e) {
 			e.printStackTrace();
 		}	
@@ -123,7 +124,21 @@ public class DatesAndTime {
 		//andere Variante:
 		System.out.println(dateTime.format(shortDateTime));
 		System.out.println(date.format(shortDateTime));
-	}
+		
+		//custom Formatter:
+		DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm");
+		System.out.println("date from custom formatter: " + dateTime.format(customFormatter));  //Januar 20, 2020, 11:12
+	}	
 	
+	private void parseDateTime() {
+		System.out.println("\n parseDateTime:");
+		
+		DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MM dd yyyy");
+		LocalDate dateParsedByCustomFormatter = LocalDate.parse("01 02 2015", customFormatter);
+		LocalTime timeParsedByDefaultFormatter = LocalTime.parse("11:22"); 
+		System.out.println("dateParsedByCustomFormatter: " + dateParsedByCustomFormatter); //2015-01-02
+		System.out.println("timeParsedByDefaultFormatter: " + timeParsedByDefaultFormatter); //11:22
+		
+	}
 	
 }

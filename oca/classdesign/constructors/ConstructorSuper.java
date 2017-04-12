@@ -5,7 +5,7 @@
 public class ConstructorSuper {
 	public static void main(String... args) {
 		System.out.println("create child");
-		//Child c = new Child(); funktioniert nicht
+		//Child c = new Child(); funktioniert nicht, da parent kein default constructor hat.
 		Child2 c2 = new Child2(); //funktioniert, da parent defaul constructor hat.
 		ChildWithConstructor cWihtConstructor = new ChildWithConstructor();
 		
@@ -38,7 +38,7 @@ class Child extends Parent {
 
 class Child2 extends ParentWithDefault {
 	public Child2() {
-		//super() wird hier automatisch eingefügt. Dieser Konstruktor kann auch weg gelassen werden.
+		//super() wird hier automatisch eingefügt. Dieser Konstruktor kann auch weg gelassen werden, er wird automatisch generiert.
 		System.out.println("Child2() ohne super");
 	}
 }
