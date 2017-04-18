@@ -5,7 +5,6 @@ javac -encoding UTF-8 MyClassName.java
 Book: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
-
 -alles aus Kapitel 5 durchgehen
 --hiding vs overriding (S.254)
 --Interfaces
@@ -29,6 +28,18 @@ ToDo's:
 --Polymorphic Parameters
 --Method overriding
 -Interfaces
+-multi dimensional arrays:
+int[][] ia; //this is a valid declaration.
+int[][] ia = new int[2][3];//This is a valid declaration and a valid instantiation
+int[][] iaa=new int[3][]; 
+int[][][] iaaa = new int[3][][]; 
+
+-switch implementieren:
+Note that the following is invalid though because a char cannot be assigned to an Integer:
+Integer x = 1;  // int x = 1; is valid.
+switch(x){
+   case 'a' : System.out.println("a");
+}
 
 
 In Progress:

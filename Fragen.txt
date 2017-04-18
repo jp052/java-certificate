@@ -1,3 +1,5 @@
+###Fragen###
+
 Welche zeichen darf eine Klasse enthalten?
 A: Wie methode, auch ein Zeichen ist möglich
 
@@ -24,4 +26,11 @@ A: Nicht ohne Probleme, es kann einen Präzisionsverlust geben
 
 Ist folgendes erlaubt? if(false) ; else ;
 A: Ja, if else ohne Code und Klammer
+
+Welche primitiven Datentypen können gegenseitig zugewiesen werden, welche Bedingungen gibt es?
+A: byte, char, short, int haben sogenanntes implicit narrowing. Werte können nur gegenseitig zugwiesen werden wenn der Wert passt.
+Bsp: Ok: inal short s = 1; byte b = s;  Nicht Ok: final short s = 200; byte b = s;
+
+Funktioniert folgendes? short s = 1; byte b = s; 
+Nein, da short keine constante ist. Folgendes geht: final short s = 1; byte b = s;
 
