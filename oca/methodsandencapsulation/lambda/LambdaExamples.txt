@@ -1,0 +1,115 @@
+############Teil 1###############
+
+java.util.function.Predicate is one of the several functional interfaces that have been added to Java 8. This interface has exactly one abstract method named test, which takes any object as input and returns a boolean. This comes in very handy when you have a collection of objects and you want to go through each object of that collection and see if that object satisfies some criteria. For example, you may have a collection of Employee objects and, in one place of your application, you want to remove all such employees whose age is below 50, while in other place, you want to remove all such employees whose salary is above 100,000. In both the cases, you want to go through your collection of employees, and check each Employee object to determine if it fits the criteria. This can be implemented by writing an interface named CheckEmployee and having a method check(Employee ) which would return true if the passed object satisfies the criteria. The following code fragments illustrate how it can be done - 
+
+
+//define the interface for creating criteria
+interface CheckEmployee {
+  boolean check(Employee e );
+}
+
+...
+
+//write a method that filters Employees based on given criteria.
+public void filterEmployees(ArrayList<Employee> dataList, CheckEmployee p){
+   Iterator<Employee> i = dataList.iterator();
+   while(i.hasNext()){
+        if(p.check(i.next())){
+             i.remove();
+    }
+   }
+}
+
+...
+
+//create a specific criteria by defining a class that implements CheckEmployee
+class MyCheckEmployee implements CheckEmployee{
+   public boolean check(Employee e){
+       return e.getSalary()>100000;
+   }
+};
+...
+
+//use the filter method with the specific criteria to filter the collection.
+filterEmployees(employeeList, new MyCheckEmployee());
+
+
+This is a very common requirement across applications. The purpose of Predicate interface (and other standard functional interfaces) is to eliminate the need for every application to write a customized interface.  For example, you can do the same thing with the Predicate interface as follows - 
+
+
+public void filterEmployees(ArrayList<Employee> dataList, Predicate<Employee> p){
+   Iterator<Employee> i = dataList.iterator();
+   while(i.hasNext()){
+        if(p.test(i.next())){
+             i.remove();
+    }
+   }
+}
+
+...
+
+// Instead of defining a MyPredicate class (like we did with MyCheckEmployee), we could also define and instantiate an anonymous inner class to reduce code clutter
+Predicate<Employee> p = new Predicate<Employee>(){
+  public boolean test(Employee e){
+     return e.getSalary()>100000;
+  }
+};
+...
+
+filterEmployees(employeeList, p);
+
+
+Note that both the interfaces (CheckEmployee and Predicate) can be used with lambda expressions in exactly the same way.  Instead of creating an anonymous inner class that implements the CheckEmployee or Predicate interface, you could just do -
+
+filterEmployees(employeeList, e->e.getSalary()>100000);
+
+The benefit with Predicate is that you don't have to write it. It is already there in the standard java library.
+
+
+############Teil 2###############
+
+A functional interface is an interface that contains exactly one abstract method. It may contain zero or more default methods and/or static methods. Because a functional interface contains exactly one abstract method, you can omit the name of that method when you implement it using a lambda expression. For example, consider the following interface - 
+interface Predicate<T> {
+    boolean test(T t);
+}
+
+The purpose of this interface is to provide a method that operates on an object of class T and return a boolean.
+
+You could have a method that takes an instance of class that implements this interface defined like this - 
+public void printImportantData(ArrayList<Data> dataList, Predicate<Data> p){
+   for(Data d: dataList){
+      if(p.test(d)) System.out.println(d);
+   }
+}
+
+where Data class could be as simple as public class Data{ public int value; }
+
+Now, you can call the above method as follows:
+
+        printImportantData(al, (Data d)->{ return d.value>1; } ); 
+Notice the lack of method name here. This is possible because the interface has only one abstract method so the compiler can figure out the name. This can be shortened to:
+
+        printImportantData(al, (Data d)->d.value>1);  
+Notice the lack of curly brackets, the return keyword, and the semicolon. This is possible because the method returns a boolean and the expression d.value>1 also returns a boolean. The compiler is therefore able to figure out that the value of this expression is to be returned from the method. This can be shortened even more to:
+
+        printImportantData(al, d->d.value>1); 
+Notice that there is no declaration of d! The compiler can figure out all information it needs because the interface has only one abstract method and that method has only one parameter. So you don't need to write all those things in your code.
+        
+
+Compare the above approach to the old style using an inner class that does the same thing - 
+
+       printImportantData(al,  new Predicate<Data>(){ 
+                            public boolean test(Data d){ 
+                                 return d.value>1; 
+                             }   }   );
+
+The Predicate interface described above can be used anywhere there is a need to "do something with an object and return a boolean" and is actually provided by the standard java library in java.util.function package. This package provides a few other useful functional interfaces. 
+
+Predicate<T>    Represents a predicate (boolean-valued function) of one argument of type T.
+Consumer<T> Represents an operation that accepts a single input argument of type T and returns no result.
+Function<T,R> Represents a function that accepts one argument of type T and produces a result of type R
+Supplier<T> Represents a supplier of results of type T.
+
+For the exam, you only need to be aware of Predicate. 
+
+Please see http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html for learning Lambda expressions in Java.

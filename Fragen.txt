@@ -34,3 +34,76 @@ Bsp: Ok: inal short s = 1; byte b = s;  Nicht Ok: final short s = 200; byte b = 
 Funktioniert folgendes? short s = 1; byte b = s; 
 Nein, da short keine constante ist. Folgendes geht: final short s = 1; byte b = s;
 
+Wie nennet man Exception und RuntimeException noch?
+A:checked Exceptions (Exception und subclasses) und unchecked Exceptions (RuntimeException und sub classes)
+
+Wo kann das final keyword verwendet werden?
+A: class, variable, method
+
+Was bedeutet final keyword bei einer Klasse/Methode/Variable?
+A: Es kann keine Subklasse von einer final Klasse erstellt werden. 
+Eine Methode kann nicht overridden, sondern nur hidden werden.
+Eine Variable ist mit final eine Konstante.
+
+Kann synchronized auf eine Klasse angewendet werden?
+A: Nein
+
+Welche Variablentypen können in switch nicht als label verwendet werden?
+A: boolean, long, float, double
+
+Kann die main methode throws Exception deklarieren?
+A: Ja, jede Methode darf das.
+
+Was passiert genau wenn eine RuntimeException nicht gefangen wird?
+A:  The exception will propagate up the method invocation stack until some method handles it. If no one handles it then the exception will be handled by the JVM and the JVM will terminated that thread.
+
+Was tut der ~ Operator?
+A: Invertiert alle  bits. Also von z.B 0 auf 1.
+
+Was sind integral types?
+A: byte, short, int, long, char. Das sind alles Datentypen welche von int erstellt werden können.
+
+Was passiert, wenn vor ein negatives int nochmal ein negatives Vorzeichen gesetzt wird?
+A: Der Wert bleibt gleich, da intern erst alles invertiert wird und dann eins hochgezählt. 
+
+Gibt es %= Operator?
+A: Ja
+
+Was ist der TemporalAccessor in der Java 8 Date API?
+A: Das gemeinsame Interface von LocalDate, LocalTime und LocalDateTime. Nur Read Only Zugriff möglich.
+
+Kann auf einen protected member in einer Superklasse zugegriffen werden, wenn ein neues Objekt mit einer Referenz vom Typ der Superklasse innerhalbt der Subklasse erzeugt wird?
+A: Nein. Das ist eine Trick Question. Es erscheint als könnte man aufgrund der Vererbung auf die Superklasse zugreifen, geht aber nicht.
+
+Welche Klassen sind final, was bedeutet das?
+A: String, StringBuffer and StringBuilder are also final. All Primitive wrappers are also final (i.e. Boolean, Integer, Byte etc).
+java.lang.System is also final. Final classes cannot be extended. 
+
+Was sind die Regeln für narrowing primitive types?
+A:
+1. The expression is a compile time constant expression of type byte, char, short, or int.
+2. The type of the variable is byte, short, or char.
+3. The value of the expression (which is known at compile time, because it is a constant expression) is representable in the type of the variable.
+
+kann narrowing conversion auf long oder double angewendet werden?
+A: Nein. char ch = 30L funktioniert nicht!
+
+Wie ist die initalisierungsreihenfolge einer Klasse?
+A:
+First, static statements/blocks are called IN THE ORDER they are defined.
+Next, instance initializer statements and blocks are called IN THE ORDER they are defined.
+
+Ist folgendes erlaubt? long m = new Long("123");
+A: Ja, aus string kann Long erstellt werden, Long wird per autoboxing zu long konvertiert.
+
+Ist new Long() erlaubt?
+A: Nein, es gibt kein wrapper ohne no-arg constructor
+
+Wie parst man einen String in einen Wrapper?
+A: new Long("213"); oder Long.parseLong("2343"); oder Long.valueOf("123").longValue();
+
+Wann ist int a = b = c = 100 gültig?
+A: wenn b und c vorher deklariert wurde. Es wird von rechts nach links zugewiesen, als erst c= 100, dann b = c, dann a = b.
+
+Darf Sting s = this.toString(); als Initialisierung für Instanzvariablen verwendet werden?
+A: Ja, es wird Object.toString() aufgerufen.

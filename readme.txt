@@ -5,6 +5,12 @@ javac -encoding UTF-8 MyClassName.java
 Book: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
+-coden: int i, j, k; i = j = k = 9;
+-long m = new Long("123"); ausführen, kompiliert das?
+-numeric promotion (S. 55)
+-casting primitives
+-DateTime with(), from() methode verwenden
+-temporalAccessor coden 
 -alles aus Kapitel 5 durchgehen
 --hiding vs overriding (S.254)
 --Interfaces

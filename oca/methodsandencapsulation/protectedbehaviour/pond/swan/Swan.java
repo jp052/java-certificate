@@ -16,7 +16,7 @@ public class Swan extends Bird {
 		System.out.println(other.text); //package access to superclass
 	}
 	
-	public void helpOhterBird() {
+	public void helpOtherBird() {
 		//Diese Methode ist zwar auch in Swan, das Object Bird ist aber auﬂerhalb des Bird package und kann daher nicht auf protected member zugreifen. 
 		//Das objekt Bird wird innerhalb vom Swan erzeugt, daher sieht es so aus als sollte man Zugriff haben.
 		Bird other = new Bird();
