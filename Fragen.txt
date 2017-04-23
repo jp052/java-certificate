@@ -107,3 +107,9 @@ A: wenn b und c vorher deklariert wurde. Es wird von rechts nach links zugewiese
 
 Darf Sting s = this.toString(); als Initialisierung für Instanzvariablen verwendet werden?
 A: Ja, es wird Object.toString() aufgerufen.
+
+Kann eine abstract classe eine main methode beinhalten?
+A: ja es ist eine normale methode.
+
+Kann eine abstract class compiliert und ausgeführt werden?
+A: Ja, wenn es eine main methode gibt.
