@@ -11,8 +11,8 @@ public class LambdaCompareTest {
 }
 
 /**
-* Verwendung von einer normalen suche ohne lambda und lambda mit einem eigenen Interface, das gegenstück liegt in LambdaCompareTest.TraditionalSearch
-* Problem: Ohne Lambdas müssen für jeden check muss eine neue Klasse von CheckTrait erstellt werden und ein neues print statement hinzugefügt werden.
+* Verwendung von einer normalen suche ohne lambda und lambda mit einem eigenen Interface, das gegenstück liegt in LambdaTest.PredicateSearch
+* Problem: Ohne Lambdas muss für jeden check eine neue Klasse von CheckTrait erstellt werden und ein neues print statement hinzugefügt werden.
 **/
 class TraditionalSearch {
 	public static void run() {
