@@ -148,3 +148,10 @@ A: objekt Gleichheit, es gibt keine spezielle Implmenierung z.B für Vergleich vo
 Welche String methoden gibt es?
 A: equals(Object), equalsIngoreCase(String), intern()
 TODO: vervollständigen
+
+Kann eine abstract classe eine main methode beinhalten?
+A: ja es ist eine normale methode.
+
+Kann eine abstract class compiliert und ausgeführt werden?
+A: Ja, wenn es eine main methode gibt.
+
