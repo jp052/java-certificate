@@ -107,3 +107,44 @@ A: wenn b und c vorher deklariert wurde. Es wird von rechts nach links zugewiese
 
 Darf Sting s = this.toString(); als Initialisierung für Instanzvariablen verwendet werden?
 A: Ja, es wird Object.toString() aufgerufen.
+
+Nenne 6 Fakten/Regel zu Strings.
+A:
+These are the six facts on Strings:
+1. Literal strings within the same class in the same package represent references to the same String object. 
+2. Literal strings within different classes in the same package represent references to the same String object. 
+3. Literal strings within different classes in different packages likewise represent references to the same String object. 
+4. Strings computed by constant expressions are computed at compile time and then treated as if they were literals. 
+5. Strings computed at run time are newly created and therefore are distinct. (So line 4 prints false.)
+6. The result of explicitly interning a computed string is the same string as any pre-existing literal string with the same contents. (So line 5 prints true.)
+We advise you to read section 3.10.5 String Literals in Java Language Specification.
+
+Checked oder unchecked Exception? java.lang.SecurityException und java.lang.CloneNotSupportedException
+A: SecurityException = Unchecked (Runtime), CloneNotSupportedException = Checked (Exception)
+
+was verursacht break und continue in einer for-loop?
+A: continue springt zum beginn der schleife und für den nächsten durchlauf aus. break bricht die schleife komplett ab.
+
+Wie funktioniert String.indexOf Methode?
+A: string.indexOf(String str) : gibt den index des erstem match zurück, bei keinem match -1
+string.indexOf(String str, int fromIndex) : gibt den index des erstem match zurück, aber fängt erst ab dem definierten fromIndex an.
+
+Nenne wichtige final classes, was bedeutet das?
+A: String, StringBuilder, StringBuffer, alle Wrapper außer java.lang.Number, java.lang.System.
+-> Von final Klassen kann nicht geerbt werden.
+
+Ist das gültig? String[] sA = new String[1] { "aaa"};
+A: Nein, da die größe nicht angegeben werden kann, wenn in der gleichen Zeile initialisiert wird in welcher das Array auch deklariert wird.
+
+Ist eine Variable in einem switch-statment, die in einem case deklariert wurde, in einem anderen case noch in scope?
+Ja. 
+
+welche Zahlenwerte kann byte abbilden?
+-128 bis 127, weil die 0 bei den Positiven Zahlen dabei ist. Es werden nur 7 bit verwendet, da das 8 für die Vorzeichen verwendet wird.
+
+Auf was prüfen wrapper klassen equals?
+A: objekt Gleichheit, es gibt keine spezielle Implmenierung z.B für Vergleich von Integer und Long.
+
+Welche String methoden gibt es?
+A: equals(Object), equalsIngoreCase(String), intern()
+TODO: vervollständigen

@@ -10,6 +10,9 @@ public class ArraysTest {
 		arraysTest.listToArrayConversion();
 		arraysTest.arrayToArrayListConversion();
 		arraysTest.arrayListCreationFixedAndDynamic();
+		
+		MatrixTestClass matrixTest = new MatrixTestClass();
+		matrixTest.loadMatrix();
 				
 	}
 	
@@ -51,10 +54,12 @@ public class ArraysTest {
 		String[] stringArray = {"bla", "blubb"};
 		List<String> stringFixedList = Arrays.asList(stringArray); //keine ArrayList, sondern eine Liste mit fixer länge.
 		System.out.println("stringFixedList size: " + stringFixedList.size()); //output: 2
+		System.out.println("stringArray before: " + Arrays.toString(stringArray));
 		
 		stringFixedList.set(1, "ElementBackedList"); //ok, da ein existierendes Feld geändert wird.
 		stringArray[0] = "ElementBackedArray";
-		for(String b : stringArray) System.out.print(b + " ");
+		
+		System.out.println("stringArray after modification: " + Arrays.toString(stringArray)); //oder: for(String b : stringArray) System.out.print(b + " ");
 		
 		//try-catch, damit nachfolgende methoden noch aufgerufen werden.
 		try {
@@ -88,4 +93,27 @@ public class ArraysTest {
 		System.out.println("normalList size: " + normalList.size());
 	}
 	
+}
+
+class MatrixTestClass {
+
+    int[][] matrix = new int[2][3];
+    
+    int a[] = {1, 2, 3};
+    int b[] = {4, 5, 6};
+            
+    public int compute(int x, int y){
+        return a[x]*b[y];
+    }
+    
+    public void loadMatrix(){
+		System.out.println("\n MatrixTestClass.loadMatrix: ");
+        for(int x=0; x<matrix.length; x++){
+            for(int y=0; y<matrix[x].length; y++){
+                matrix[x][y] = compute(x, y);
+            }
+        }
+		
+		System.out.println(Arrays.deepToString(matrix));
+    }
 }
