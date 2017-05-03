@@ -10,6 +10,7 @@ public class ArraysTest {
 		arraysTest.listToArrayConversion();
 		arraysTest.arrayToArrayListConversion();
 		arraysTest.arrayListCreationFixedAndDynamic();
+		arraysTest.array2dInitialisationAndAccess();
 		
 		MatrixTestClass matrixTest = new MatrixTestClass();
 		matrixTest.loadMatrix();
@@ -91,6 +92,33 @@ public class ArraysTest {
 		normalList.add("bla");
 		normalList.remove(1);
 		System.out.println("normalList size: " + normalList.size());
+	}
+	
+	private void array2dInitialisationAndAccess() {
+		System.out.println("\n array2D: ");
+		
+		//Direkte Deklaration und Initialisierung mit Werten:
+		int array2dFastInit[][] = {{1,2}, {2,3, 4}, {5}, null}; //längen des jeweiligen Array wird automatisch festgelgt, durch die Anzahl Elemente. Jede Spalte hat eine andere Länge
+		//jedes Array in einer {} ist eine Spalte.
+		//Darstellung:
+		//   0 | 1 | 2 | 3
+		//0  1   2   5   null
+		//1  2   3
+		//2      4
+		//3		
+		
+		//Zugriff auf Elemente und ganze Dimension/Array
+		int element01value2 = array2dFastInit[0][1];
+		System.out.println("element01value2: " + element01value2);
+		
+		int[] array0 = array2dFastInit[0]; //holte den der ersten spalte
+		System.out.println("array0: " + Arrays.toString(array0));
+		
+		//Ohne Initialisierung von Werten Variante 1:
+		int [][] array2dVariation1 = new int[1]
+		
+		//Ohne Initialisierung von Werten Variante 2:
+		
 	}
 	
 }

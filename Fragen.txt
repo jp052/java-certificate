@@ -1,4 +1,9 @@
 ###Fragen###
+Was ist der Unterschied zwischen deklarieren, initialisieren und instanziieren?
+A: Deklarieren = Variable definieren (String s oder int number)
+Initialisierung = Wert zuweisen (String s = "s" oder int number = 1)
+Instanziieren = Neues Objekt erzeugen mit new (new Object())
+
 
 Welche zeichen darf eine Klasse enthalten?
 A: Wie methode, auch ein Zeichen ist möglich
