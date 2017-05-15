@@ -98,16 +98,19 @@ public class ArraysTest {
 		System.out.println("\n array2D: ");
 		
 		//Direkte Deklaration und Initialisierung mit Werten:
-		int array2dFastInit[][] = {{1,2}, {2,3, 4}, {5}, null}; //längen des jeweiligen Array wird automatisch festgelgt, durch die Anzahl Elemente. Jede Spalte hat eine andere Länge
+		//längen des jeweiligen Array wird automatisch festgelgt, durch die Anzahl Elemente. Jede Spalte hat eine andere Länge
+		//Ein einzelnes Element kann bei einem int array nicht mit null befüllt werden, nur eine ganze Spalte/Zeile, die dann ein Array Objekt ist.
+		int array2dFastInit[][] = {{1,2}, {3,4, 5}, {6}, null}; 
 		//jedes Array in einer {} ist eine Spalte.
 		//Darstellung:
 		//   0 | 1 | 2 | 3
-		//0  1   2   5   null
-		//1  2   3
-		//2      4
+		//0  1   3   6   null (ganze Spalte/Array)
+		//1  2   4
+		//2      5
 		//3		
 		
 		//Zugriff auf Elemente und ganze Dimension/Array
+		//Die erste Dimension bestimmt die x-Achse, die zweite die y-Achse.
 		int element01value2 = array2dFastInit[0][1];
 		System.out.println("element01value2: " + element01value2);
 		
@@ -115,8 +118,31 @@ public class ArraysTest {
 		System.out.println("array0: " + Arrays.toString(array0));
 		
 		//Ohne Initialisierung von Werten Variante 1:
-		int [][] array2dVariation1 = new int[1]
+		//Anmerkung: So können nur array quadrate erstellt werden, jede Spalte hat also die selbe Länge. Hier immer 1 also:
+		//   0 | 1 | 2 
+		//0  1   3   null   (ganze Spalte/Array)
+		//1  2   0   		
+		int [][] array2dVariation1 = new int[4][2]; //[3] ist die Länge der x-Achse, [2] ist Länge der y-Achse.
+		array2dVariation1[0][0] = 1;
+		array2dVariation1[0][1] = 2;
 		
+		array2dVariation1[1][0] = 3;
+		//array2dVariation1[1][1] = 0; //automatisch 0
+		
+		array2dVariation1[2] = null; //ganzes Array ist null
+		
+		//2d Array output:
+		try {
+			for(int[] inner : array2dVariation1) {
+				for(int num: inner) { //null array an position [2] wirft nullpointer exception
+					System.out.println(num  + " ");
+				}
+				System.out.println();
+			}
+		} catch(NullPointerException e) {
+			e.printStackTrace();
+		}
+				
 		//Ohne Initialisierung von Werten Variante 2:
 		
 	}

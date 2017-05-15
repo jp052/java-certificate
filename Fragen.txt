@@ -153,10 +153,13 @@ A: objekt Gleichheit, es gibt keine spezielle Implmenierung z.B für Vergleich vo
 Welche String methoden gibt es?
 A: equals(Object), equalsIngoreCase(String), intern()
 TODO: vervollständigen
-
+ 
 Kann eine abstract classe eine main methode beinhalten?
 A: ja es ist eine normale methode.
 
 Kann eine abstract class compiliert und ausgeführt werden?
 A: Ja, wenn es eine main methode gibt.
+
+Kann StringBuffer Wert ohne toString in println ausgegeben werden?
+A: Ja nur wenn zusätzlich ein String mit dem + Operator hinzugefügt wird. Dann wird automatisch toString aufgerufen. z.b System.out.println("val: " + stringBuffer)
 
