@@ -5,6 +5,7 @@ public class StringManipulation {
 		stringManipulation.substring();
 		stringManipulation.stringEquality();
 		stringManipulation.charToString();
+		stringManipulation.charArrayToString();
 		stringManipulation.stringEqualsWithInitialization();
 	}
 
@@ -44,8 +45,16 @@ public class StringManipulation {
 		System.out.println("x2 == y2: " + (x2 == y2)); //false, da explizit 2 unterschiedliche String Objekte angelegt werden.		
 	}	
 	
-	public void charToString() {
-		System.out.println("\ncharToString():");
+	private void charToString() {
+		System.out.println("\n charToString:");
+		//String s = 'a'; DOES NOT COMPILE: incompatible types: char cannot be converted to String
+		String s2 = 'b' + "";
+		
+		System.out.println(s2);
+	}
+	
+	public void charArrayToString() {
+		System.out.println("\n charArrayToString:");
 		String myStr = "good";
         char[] myCharArr = {'g', 'o', 'o', 'd' };
         

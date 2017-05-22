@@ -82,7 +82,10 @@ A: Nein. Das ist eine Trick Question. Es erscheint als könnte man aufgrund der V
 
 Welche Klassen sind final, was bedeutet das?
 A: String, StringBuffer and StringBuilder are also final. All Primitive wrappers are also final (i.e. Boolean, Integer, Byte etc).
-java.lang.System is also final. Final classes cannot be extended. 
+java.lang.System is also final. Final classes cannot be extended.
+
+Welche Klassen sind immutable?
+A: String, alle primitive Wrapper, Locale, Enums(in der Regel) 
 
 Was sind die Regeln für narrowing primitive types?
 A:
@@ -163,3 +166,52 @@ A: Ja, wenn es eine main methode gibt.
 Kann StringBuffer Wert ohne toString in println ausgegeben werden?
 A: Ja nur wenn zusätzlich ein String mit dem + Operator hinzugefügt wird. Dann wird automatisch toString aufgerufen. z.b System.out.println("val: " + stringBuffer)
 
+Nenne Regel für Switch statement!
+A:
+Here are the rules for a switch statement:
+1. Only String, byte, char, short, int, (and their wrapper classes Byte, Character, Short, and Integer), and enums can be used as types of a switch variable. (String is allowed only since Java 7). 
+2. The case constants must be assignable to the switch variable. For example, if your switch variable is of class String, your case labels must use Strings as well.
+3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535.
+4.  All case labels should be COMPILE TIME CONSTANTS.
+5. No two of the case constant expressions associated with a switch statement may have the same value.
+6. At most one default label may be associated with the same switch statement.
+
+Ist das legal? int a[ ][ ] = new int [ ][4] ; int[ ] a[ ] = new int[4][ ] ;
+A: 1. ist nicht legal, da dimensionen von links nach rechts erstellt werden müssen.
+
+Wie verhalten sich String und StringBuilder methoden mit start und end index?
+A:
+
+Können primitive Wrapper mit arithmetischen mitteln verrechnet werden?
+A: Ja
+
+Kann einem String Variable ein char zugewiesen werden?
+A: nein, nur wenn mindestens 1 string angehängt wird: String s = 'a' + "";
+
+gibt es das Keyword unsigned?
+A: nein
+
+Wie wandelt man einen Primitiv Wrapper in primitiv um und anders herum?
+A: Wrapper to Primitive: WrapperName.parseWrapperName("valueString"); z.B Boolean.parseBoolean("true")
+Primitive to Wrapper: WrapperName.valueOf(true); z.B Boolean.valueOf(true) oder Boolean.valueOf("true")
+
+Welchen Datentype erwartet eine while-Schleife?
+A: boolean oder Boolean
+
+Was passiert bei doppelten minuszeichen, verhält es sich wie in normalen Mathematik? z.B (-3) - (-5)
+A: Ja verhält sich ganz normal. (-3) - (-5) = 2
+
+Was ergibt byte i = -128; i--; ?
+A: 127
+
+Ist folgendes erlaubt? i = -128; i = i-1; ?
+A: Nein
+
+was ist das maximum und minimum von byte?
+A: 127 bis -128
+
+Kann switch long und boolean als switch-value verwenden?
+A: nein
+
+Kann ein Primitiver Datentype mit einem Wrapper so verglichen werden primitiveInt == wrapperInt
+A: Ja, Wrapper wir autoboxed, da ein primitiver type vorhanden ist.

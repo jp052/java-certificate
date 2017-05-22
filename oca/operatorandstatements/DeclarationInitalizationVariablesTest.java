@@ -8,8 +8,6 @@ public class DeclarationInitalizationVariablesTest {
 		
 		System.out.println("after: " + i + " " + j + " " + k) ; //Prints 9 9 9. Es wird von rechts nach links initialisiert.
 		
-		
-		
 		//declaration:
 		String myString;
 		int number;
