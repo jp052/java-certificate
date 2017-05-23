@@ -11,10 +11,11 @@ public class ArraysTest {
 		arraysTest.arrayToArrayListConversion();
 		arraysTest.arrayListCreationFixedAndDynamic();
 		arraysTest.array2dInitialisationAndAccess();
+		arraysTest.array2dIllegalInitialization();
+		arraysTest.array2dLength();
 		
 		MatrixTestClass matrixTest = new MatrixTestClass();
 		matrixTest.loadMatrix();
-				
 	}
 	
 	private void arrayCreation() {
@@ -97,7 +98,7 @@ public class ArraysTest {
 	private void array2dInitialisationAndAccess() {
 		System.out.println("\n array2D: ");
 		
-		//Direkte Deklaration und Initialisierung mit Werten:
+		//####Direkte Deklaration und Initialisierung mit Werten:####
 		//längen des jeweiligen Array wird automatisch festgelgt, durch die Anzahl Elemente. Jede Spalte hat eine andere Länge
 		//Ein einzelnes Element kann bei einem int array nicht mit null befüllt werden, nur eine ganze Spalte/Zeile, die dann ein Array Objekt ist.
 		int array2dFastInit[][] = {{1,2}, {3,4, 5}, {6}, null}; 
@@ -117,7 +118,8 @@ public class ArraysTest {
 		int[] array0 = array2dFastInit[0]; //holte den der ersten spalte
 		System.out.println("array0: " + Arrays.toString(array0));
 		
-		//Ohne Initialisierung von Werten Variante 1:
+		
+		//####Ohne Initialisierung von Werten Variante 1:####
 		//Anmerkung: So können nur array quadrate erstellt werden, jede Spalte hat also die selbe Länge. Hier immer 1 also:
 		//   0 | 1 | 2 
 		//0  1   3   null   (ganze Spalte/Array)
@@ -143,9 +145,40 @@ public class ArraysTest {
 			e.printStackTrace();
 		}
 				
-		//Ohne Initialisierung von Werten Variante 2:
+		//####Ohne Initialisierung von Werten Variante 2:####
 		
 	}
+	
+	private void array2dIllegalInitialization() {		
+		//int[1][2] sizeIllegal = new int[][]; //Size nicht links vom Zuweisungsoperator erlaubt.		
+		//int[][] sizeNotOk1 = new int [][]; //Mindestens die ersten Dimension muss angegeben werden.
+		//int[][] sizeNotOk = new int [][2]; //Nicht Erlaubt, Array größe bei Mehrdimensional muss von links nach rechts angegeben werden
+		
+		//folgende sind erlaubt:
+		int[][] sizeOkDynamic = new int [2][]; //Erlaubt, die größe der 2. Dimension wird automatisch ermittelt 
+		int[][] sizeOkFix = new int [2][3]; //legt göße fix fest.
+	}
+	
+	private void array2dLength() {
+		System.out.println("\n array2dLength:");
+		int[][] twoD = { { 1, 2, 3} , { 4, 5, 6, 7}, { 8, 9, 10, 5, 6 } };
+		
+		System.out.println(twoD[1].length); //output: 4. für Array   { 4, 5, 6, 7},
+		System.out.println(twoD.length); //output: 3. für die länge der x-achse bzw. 1. Dimension
+		System.out.println(twoD[2].getClass().isArray());		
+	}
+	
+	private void array3dUsage() {
+		double daaa[][][] = new double[3][][];
+		double d = 100.0;
+		double[][] daa = new double[1][1];
+		
+		daaa[0] = daa; //funktioniert, da die erste dimension ein 2d array enthalten muss.
+		daa = daaa[0]; //funktioniert, da die erste dimensin von daaa ein 2d array enthält.
+		
+	}
+	
+	
 	
 }
 
