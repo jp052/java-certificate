@@ -5,6 +5,7 @@ javac -encoding UTF-8 MyClassName.java
 Book: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
+-schleifen mit lables
 -coden: int i, j, k; i = j = k = 9;
 -long m = new Long("123"); ausführen, kompiliert das?
 -numeric promotion (S. 55)
@@ -19,6 +20,7 @@ ToDo's:
 -logical and bitwise AND, OR 
 -String: alle metthoden, concat, method chaining etc.
 -StringBuilder: alle OCA Methoden ausprobieren, auch chaining (substr vs append).
+--setLength
 -Static state change (S. 182f)
 -initialisatzion order (S.204)
 -immutable class schreiben (S. 207)
