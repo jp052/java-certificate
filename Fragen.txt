@@ -1,4 +1,9 @@
 ###Fragen###
+Was ist der Unterschied zwischen deklarieren, initialisieren und instanziieren?
+A: Deklarieren = Variable definieren (String s oder int number)
+Initialisierung = Wert zuweisen (String s = "s" oder int number = 1)
+Instanziieren = Neues Objekt erzeugen mit new (new Object())
+
 
 Welche zeichen darf eine Klasse enthalten?
 A: Wie methode, auch ein Zeichen ist möglich
@@ -77,7 +82,10 @@ A: Nein. Das ist eine Trick Question. Es erscheint als könnte man aufgrund der V
 
 Welche Klassen sind final, was bedeutet das?
 A: String, StringBuffer and StringBuilder are also final. All Primitive wrappers are also final (i.e. Boolean, Integer, Byte etc).
-java.lang.System is also final. Final classes cannot be extended. 
+java.lang.System is also final. Final classes cannot be extended.
+
+Welche Klassen sind immutable?
+A: String, alle primitive Wrapper, Locale, Enums(in der Regel) 
 
 Was sind die Regeln für narrowing primitive types?
 A:
@@ -108,8 +116,114 @@ A: wenn b und c vorher deklariert wurde. Es wird von rechts nach links zugewiese
 Darf Sting s = this.toString(); als Initialisierung für Instanzvariablen verwendet werden?
 A: Ja, es wird Object.toString() aufgerufen.
 
+Nenne 6 Fakten/Regel zu Strings.
+A:
+These are the six facts on Strings:
+1. Literal strings within the same class in the same package represent references to the same String object. 
+2. Literal strings within different classes in the same package represent references to the same String object. 
+3. Literal strings within different classes in different packages likewise represent references to the same String object. 
+4. Strings computed by constant expressions are computed at compile time and then treated as if they were literals. 
+5. Strings computed at run time are newly created and therefore are distinct. (So line 4 prints false.)
+6. The result of explicitly interning a computed string is the same string as any pre-existing literal string with the same contents. (So line 5 prints true.)
+We advise you to read section 3.10.5 String Literals in Java Language Specification.
+
+Checked oder unchecked Exception? java.lang.SecurityException und java.lang.CloneNotSupportedException
+A: SecurityException = Unchecked (Runtime), CloneNotSupportedException = Checked (Exception)
+
+was verursacht break und continue in einer for-loop?
+A: continue springt zum beginn der schleife und für den nächsten durchlauf aus. break bricht die schleife komplett ab.
+
+Wie funktioniert String.indexOf Methode?
+A: string.indexOf(String str) : gibt den index des erstem match zurück, bei keinem match -1
+string.indexOf(String str, int fromIndex) : gibt den index des erstem match zurück, aber fängt erst ab dem definierten fromIndex an.
+
+Nenne wichtige final classes, was bedeutet das?
+A: String, StringBuilder, StringBuffer, alle Wrapper außer java.lang.Number, java.lang.System.
+-> Von final Klassen kann nicht geerbt werden.
+
+Ist das gültig? String[] sA = new String[1] { "aaa"};
+A: Nein, da die größe nicht angegeben werden kann, wenn in der gleichen Zeile initialisiert wird in welcher das Array auch deklariert wird.
+
+Ist eine Variable in einem switch-statment, die in einem case deklariert wurde, in einem anderen case noch in scope?
+Ja. 
+
+welche Zahlenwerte kann byte abbilden?
+-128 bis 127, weil die 0 bei den Positiven Zahlen dabei ist. Es werden nur 7 bit verwendet, da das 8 für die Vorzeichen verwendet wird.
+
+Auf was prüfen wrapper klassen equals?
+A: objekt Gleichheit, es gibt keine spezielle Implmenierung z.B für Vergleich von Integer und Long.
+
+Welche String methoden gibt es?
+A: equals(Object), equalsIngoreCase(String), intern()
+TODO: vervollständigen
+ 
 Kann eine abstract classe eine main methode beinhalten?
 A: ja es ist eine normale methode.
 
 Kann eine abstract class compiliert und ausgeführt werden?
 A: Ja, wenn es eine main methode gibt.
+
+Kann StringBuffer Wert ohne toString in println ausgegeben werden?
+A: Ja nur wenn zusätzlich ein String mit dem + Operator hinzugefügt wird. Dann wird automatisch toString aufgerufen. z.b System.out.println("val: " + stringBuffer)
+
+Nenne Regel für Switch statement!
+A:
+Here are the rules for a switch statement:
+1. Only String, byte, char, short, int, (and their wrapper classes Byte, Character, Short, and Integer), and enums can be used as types of a switch variable. (String is allowed only since Java 7). 
+2. The case constants must be assignable to the switch variable. For example, if your switch variable is of class String, your case labels must use Strings as well.
+3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535.
+4.  All case labels should be COMPILE TIME CONSTANTS.
+5. No two of the case constant expressions associated with a switch statement may have the same value.
+6. At most one default label may be associated with the same switch statement.
+
+Ist das legal? int a[ ][ ] = new int [ ][4] ; int[ ] a[ ] = new int[4][ ] ;
+A: 1. ist nicht legal, da dimensionen von links nach rechts erstellt werden müssen.
+
+Wie verhalten sich String und StringBuilder methoden mit start und end index?
+A:
+
+Können primitive Wrapper mit arithmetischen mitteln verrechnet werden?
+A: Ja
+
+Kann einem String Variable ein char zugewiesen werden?
+A: nein, nur wenn mindestens 1 string angehängt wird: String s = 'a' + "";
+
+gibt es das Keyword unsigned?
+A: nein
+
+Wie wandelt man einen Primitiv Wrapper in primitiv um und anders herum?
+A: Wrapper to Primitive: WrapperName.parseWrapperName("valueString"); z.B Boolean.parseBoolean("true")
+Primitive to Wrapper: WrapperName.valueOf(true); z.B Boolean.valueOf(true) oder Boolean.valueOf("true")
+
+Welchen Datentype erwartet eine while-Schleife?
+A: boolean oder Boolean
+
+Was passiert bei doppelten minuszeichen, verhält es sich wie in normalen Mathematik? z.B (-3) - (-5)
+A: Ja verhält sich ganz normal. (-3) - (-5) = 2
+
+Was ergibt byte i = -128; i--; ?
+A: 127
+
+Ist folgendes erlaubt? i = -128; i = i-1; ?
+A: Nein
+
+was ist das maximum und minimum von byte?
+A: 127 bis -128
+
+Kann switch long und boolean als switch-value verwenden?
+A: nein
+
+Kann ein Primitiver Datentype mit einem Wrapper so verglichen werden primitiveInt == wrapperInt
+A: Ja, Wrapper wir autoboxed, da ein primitiver type vorhanden ist.
+
+Gibt es object.getClass().isArray()?
+A: Ja, für Arrays returned die Methode true.
+
+Welche Exception wird von instance und static block initializer geworfen?
+A: Immer ExceptionInInitializerError, egal welche exception geworfen wurde.
+
+Welche Exception Art kann im instance oder static lock initializer geworfen werden?
+A: nur runtime/unchecked exceptions.
+
+Wann kann man ein Objekt einer superklasse in eine subklasse casten?
+A: Wenn das Suerklassenobjekt zur Laufzeit eine Instanz der Subklasse enthält.

@@ -1,0 +1,2 @@
+Methoden log:
+System.out.println("\n myMethodName:");
