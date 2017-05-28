@@ -5,7 +5,8 @@ javac -encoding UTF-8 MyClassName.java
 Book: OCA: Oracle Certified Associate Java SE 8 Programmer I Study Guide
 
 ToDo's:
--schleifen mit lables
+-schleifen mit lables 
+-for schleife mit mehreren statments (OCA Buch S. 82)
 -coden: int i, j, k; i = j = k = 9;
 -long m = new Long("123"); ausführen, kompiliert das?
 -numeric promotion (S. 55)
