@@ -231,7 +231,11 @@ A: Wenn das Suerklassenobjekt zur Laufzeit eine Instanz der Subklasse enthält.
 Was sind die Regeln für Label?
 A: siehe OCA Buch
 
-Was sind die Regeln für eine For-Loop?
-A:
+Kann eine statische Methode/Variable über ein null Referenz aufgerufen werden?
+A: Ja
 
+Wann muss eine Exception einer superklasse geworfen werden, anhand was wird das fest gestellt?
+A: Es hängt immer an der Exception Defintionen vom Type der Referenz. Der Compiler erkennt nicht ob zur Laufzeit eine Kindklasse ohne Exception List vorhanden ist.
 
+Welche primitiven typen können sich gegenseitig zugewiesen werden?
+A: suchenin OCA Buch.
