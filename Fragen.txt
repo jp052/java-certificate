@@ -227,3 +227,11 @@ A: nur runtime/unchecked exceptions.
 
 Wann kann man ein Objekt einer superklasse in eine subklasse casten?
 A: Wenn das Suerklassenobjekt zur Laufzeit eine Instanz der Subklasse enthält.
+
+Was sind die Regeln für Label?
+A: siehe OCA Buch
+
+Was sind die Regeln für eine For-Loop?
+A:
+
+
