@@ -73,3 +73,23 @@ docker run -it -v /c/Users/Jan-PC/dockerShare:/dockerShare openjdk
 cd dockerShare/java-certificate/oca/
 
 
+Enthuware Fragen zum Wiederholen:
+2.1416
+2.1339
+2.1369
+2.1196
+2.1207
+2.1406
+2.962
+
+
+Erldigte Obejective Wise Wiederholungen:
+- Working with Java Data Types
+- Operators and Decision Constructs
+- Creating and Using Arrays
+- Using Loop Constructs
+- Working with Constructors, Methods, and Encapsulation
+
+
+
+

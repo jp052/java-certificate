@@ -239,3 +239,77 @@ A: Es hängt immer an der Exception Defintionen vom Type der Referenz. Der Compil
 
 Welche primitiven typen können sich gegenseitig zugewiesen werden?
 A: suchenin OCA Buch.
+
+Kann eine satische variable/methode mit this aufgerufen werden?
+A: Nicht aus der main methode, (Herausfinen: ist es aus einer anderen möglich?)
+
+Wann muss this. keyword explizit gesetzt werden?
+A:
+
+dürfen overriden methoden mit primitiven return tpyes auch promotion fähige zurückgeben?
+A: nein, overridden methoden mit primitiven datentypen, müssen immer den gleichen datentype zurückgeben.
+
+Darf nach einem Exception finally block ein catch block kommen?
+A: nein
+
+Nenne Exception Syntax-Regeln:
+A: 
+Syntax of try/catch/finally is:
+
+try{
+}
+catch(Exception1 e) {... }
+catch(Exception2 e) {... }
+...
+catch(ExceptionN e) {... }
+finally { ...  }
+
+With a try, either a catch and or finally or both can occur. 
+A try MUST be followed by at least one catch or finally. (Unless it is a try with resources statement, which is not in scope for this exam.)
+
+In Java 7, you can collapse the catch blocks into a single one: 
+
+try {     
+  ...
+} 
+catch (SQLException | IOException | RuntimeException e) {     
+  //In this block, the class of the actual exception object will be whatever exception is thrown at runtime.
+  //But the class of the reference e will be the closest common super class of all the exceptions in the catch block.
+  //In this case, it will be java.lang.Exception because that is the most specific class that is a super class for all the three exceptions.
+  e.printStackTrace(); 
+} 
+
+Was bewirkt return; in einem catch  block?
+A:
+
+Welche Exceptions müssen beim Überschreiben einer Methode angegben werden?
+A: Es müssen immer eine Liste mit Sub-Exceptions angebene werden. (wie auch beim Return-Type)
+Außnahme: Keine Exception ist auch erlaubt (Leere liste von exceptions)
+
+Kann instanceof verwendet werden, wenn die getetste instanz keine beziehung in der Vererbungshierarchie oder Interface hat?
+A: Bei Vererbung erkennt der compiler das und wirft einen Fehler.
+Bei Interface implementierung erennt der compiler das nur, wenn die Klasse der zu vergleichenden Referenz final ist.
+
+Wo beginnt und endet der Index bei String.substring(1,5)?
+start index inclusive, end index exclusive.
+
+Regeln um lambda syntax zu validieren:
+A: 
+There is a simple trick to identify invalid lambda constructs. When you write a lambda expression for a functional interface, you are essentially providing an implementation of the method declared in that interface but in a very concise manner.  Therefore, the lambda expression code that you write must contain all the pieces of the regular method code except the ones that the compiler can easily figure out on its own such as the parameter types, return keyword, and brackets. So, in a lambda expression, just check that all the information is there and that the expression follows the basic syntax - 
+
+(parameter list) OR single_variable_without_type -> { regular lines of code } OR just_an_expression_without_semicolon
+
+For a complete discussion on this topic please see this short tutorial - http://enthuware.com/index.php/home/115
+
+Muss man beim Predicate für lambda den Datentype per generics bekannt geben?
+A: Ja
+
+Wie erkennt man welcher Return Type eine numerische Berechnung hat? 
+immer den der größt benötigte in einer Konstanten oder dem Datentype der variable.
+Es kann aber immer nur int, long, float oder double sein.
+http://enthuware.com/forum/viewtopic.php?f=2&t=1800&p=4831&hilit=never#p4831
+
+Welche außnahme gibt es für if-Bedingung, wenn if(false) verwendet wird?
+A: Es ist möglich Variable ohne compilerfehler zuzuweisen, obwohl der code unreachable ist. Bei z.B while oder for geht das nicht.
+Grund ist, dass der compiler solge statements automatisch entfernt zur optimierung für Productivcode mit if(DEBUG) mit DEBUG = false.
+
