@@ -1,11 +1,66 @@
 ###Fragen###
 weiter bei Zeile 117
 
+Muss man beim Predicate für lambda den Datentype per generics bekannt geben?
+A: Ja
+
+Regeln um lambda syntax zu validieren:
+A: 
+There is a simple trick to identify invalid lambda constructs. When you write a lambda expression for a functional interface, you are essentially providing an implementation of the method declared in that interface but in a very concise manner.  Therefore, the lambda expression code that you write must contain all the pieces of the regular method code except the ones that the compiler can easily figure out on its own such as the parameter types, return keyword, and brackets. So, in a lambda expression, just check that all the information is there and that the expression follows the basic syntax - 
+
+(parameter list) OR single_variable_without_type -> { regular lines of code } OR just_an_expression_without_semicolon
+
+For a complete discussion on this topic please see this short tutorial - http://enthuware.com/index.php/home/115
+
+Wie erkennt man welcher Return Type eine numerische Berechnung hat? 
+immer den der größt benötigte in einer Konstanten oder dem Datentype der variable.
+Es kann aber immer nur int, long, float oder double sein. Nie möglich ist byte, char, short, da bei eine berechnung immer mindestens int ergibt.
+http://enthuware.com/forum/viewtopic.php?f=2&t=1800&p=4831&hilit=never#p4831
+
+Kann man mehrere exceptions auf einmal fangen?
+A:
+In Java 7, you can collapse the catch blocks into a single one: 
+
+try {     
+  ...
+} 
+catch (SQLException | IOException | RuntimeException e) {     
+  //In this block, the class of the actual exception object will be whatever exception is thrown at runtime.
+  //But the class of the reference e will be the closest common super class of all the exceptions in the catch block.
+  //In this case, it will be java.lang.Exception because that is the most specific class that is a super class for all the three exceptions.
+  e.printStackTrace(); 
+} 
+
+Wann muss eine Exception einer superklasse geworfen werden, anhand was wird das fest gestellt?
+A: Es hängt immer an der Exception Definition vom Type der Referenz. Also wenn der Referenztyp eine Checked Exception enthält, muss diese gehandhabt werden.
+Der Compiler erkennt nicht ob zur Laufzeit eine Kindklasse ohne Exception List vorhanden ist.
+
+Welche Exception wird von instance und static block initializer geworfen?
+A: Immer ExceptionInInitializerError, egal welche exception geworfen wurde.
+
+Welche Exception Art kann im instance oder static lock initializer geworfen werden?
+A: nur runtime/unchecked exceptions.
+
+Gibt es object.getClass().isArray()?
+A: Ja, für Arrays returned die Methode true.
+
+Wie wandelt man einen Primitiv Wrapper in primitiv um und anders herum?
+A: Wrapper to Primitive: primitve p = WrapperName.parseWrapperName("valueString"); z.B boolean b = Boolean.parseBoolean("true")
+Primitive to Wrapper: WrapperName w = WrapperName.valueOf(true); z.B Boolean b = Boolean.valueOf(true) oder Boolean b = Boolean.valueOf("true")
+
+Kann ein Primitiver Datentype mit einem Wrapper so verglichen werden primitiveInt == wrapperInt
+A: Ja, Wrapper wir autoboxed, da ein primitiver type vorhanden ist.
+
+Was passiert bei doppelten minuszeichen, verhält es sich wie in normalen Mathematik? z.B (-3) - (-5)
+A: Ja verhält sich ganz normal. (-3) - (-5) = 2
+
+Ist folgendes erlaubt? i = -128; i = i-1; ?
+A: Nein
+
 Was ist der Unterschied zwischen deklarieren, initialisieren und instanziieren?
 A: Deklarieren = Variable definieren (String s oder int number)
 Initialisierung = Wert zuweisen (String s = "s" oder int number = 1)
 Instanziieren = Neues Objekt erzeugen mit new (new Object())
-
 
 Welche zeichen darf eine Klasse enthalten?
 A: Wie methode, auch ein Zeichen ist möglich
@@ -139,7 +194,7 @@ A: string.indexOf(String str) : gibt den index des erstem match zurück, bei kein
 string.indexOf(String str, int fromIndex) : gibt den index des erstem match zurück, aber fängt erst ab dem definierten fromIndex an.
 
 Nenne wichtige final classes, was bedeutet das?
-A: String, StringBuilder, StringBuffer, alle Wrapper außer java.lang.Number, java.lang.System.
+A: String, StringBuilder, StringBuffer, alle Wrapper außer java.lang.Number (abstract), java.lang.System.
 -> Von final Klassen kann nicht geerbt werden.
 
 Ist das gültig? String[] sA = new String[1] { "aaa"};
@@ -172,7 +227,8 @@ A:
 Here are the rules for a switch statement:
 1. Only String, byte, char, short, int, (and their wrapper classes Byte, Character, Short, and Integer), and enums can be used as types of a switch variable. (String is allowed only since Java 7). 
 2. The case constants must be assignable to the switch variable. For example, if your switch variable is of class String, your case labels must use Strings as well.
-3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535.
+3. The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char, 
+then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535.
 4.  All case labels should be COMPILE TIME CONSTANTS.
 5. No two of the case constant expressions associated with a switch statement may have the same value.
 6. At most one default label may be associated with the same switch statement.
@@ -192,39 +248,17 @@ A: nein, nur wenn mindestens 1 string angehängt wird: String s = 'a' + "";
 gibt es das Keyword unsigned?
 A: nein
 
-Wie wandelt man einen Primitiv Wrapper in primitiv um und anders herum?
-A: Wrapper to Primitive: WrapperName.parseWrapperName("valueString"); z.B Boolean.parseBoolean("true")
-Primitive to Wrapper: WrapperName.valueOf(true); z.B Boolean.valueOf(true) oder Boolean.valueOf("true")
-
 Welchen Datentype erwartet eine while-Schleife?
 A: boolean oder Boolean
 
-Was passiert bei doppelten minuszeichen, verhält es sich wie in normalen Mathematik? z.B (-3) - (-5)
-A: Ja verhält sich ganz normal. (-3) - (-5) = 2
-
 Was ergibt byte i = -128; i--; ?
 A: 127
-
-Ist folgendes erlaubt? i = -128; i = i-1; ?
-A: Nein
 
 was ist das maximum und minimum von byte?
 A: 127 bis -128
 
 Kann switch long und boolean als switch-value verwenden?
 A: nein
-
-Kann ein Primitiver Datentype mit einem Wrapper so verglichen werden primitiveInt == wrapperInt
-A: Ja, Wrapper wir autoboxed, da ein primitiver type vorhanden ist.
-
-Gibt es object.getClass().isArray()?
-A: Ja, für Arrays returned die Methode true.
-
-Welche Exception wird von instance und static block initializer geworfen?
-A: Immer ExceptionInInitializerError, egal welche exception geworfen wurde.
-
-Welche Exception Art kann im instance oder static lock initializer geworfen werden?
-A: nur runtime/unchecked exceptions.
 
 Wann kann man ein Objekt einer superklasse in eine subklasse casten?
 A: Wenn das Suerklassenobjekt zur Laufzeit eine Instanz der Subklasse enthält.
@@ -235,23 +269,17 @@ A: siehe OCA Buch
 Kann eine statische Methode/Variable über ein null Referenz aufgerufen werden?
 A: Ja
 
-Wann muss eine Exception einer superklasse geworfen werden, anhand was wird das fest gestellt?
-A: Es hängt immer an der Exception Defintionen vom Type der Referenz. Der Compiler erkennt nicht ob zur Laufzeit eine Kindklasse ohne Exception List vorhanden ist.
-
-Welche primitiven typen können sich gegenseitig zugewiesen werden?
-A: suchenin OCA Buch.
-
 Kann eine satische variable/methode mit this aufgerufen werden?
-A: Nicht aus der main methode, (Herausfinen: ist es aus einer anderen möglich?)
+A: Nicht aus einer statischen methode möglich.
 
 Wann muss this. keyword explizit gesetzt werden?
-A:
+A: 
 
 dürfen overriden methoden mit primitiven return tpyes auch promotion fähige zurückgeben?
 A: nein, overridden methoden mit primitiven datentypen, müssen immer den gleichen datentype zurückgeben.
 
 Darf nach einem Exception finally block ein catch block kommen?
-A: nein
+A: nein, finally ist im der letzte block
 
 Nenne Exception Syntax-Regeln:
 A: 
@@ -289,26 +317,10 @@ Außnahme: Keine Exception ist auch erlaubt (Leere liste von exceptions)
 
 Kann instanceof verwendet werden, wenn die getetste instanz keine beziehung in der Vererbungshierarchie oder Interface hat?
 A: Bei Vererbung erkennt der compiler das und wirft einen Fehler.
-Bei Interface implementierung erennt der compiler das nur, wenn die Klasse der zu vergleichenden Referenz final ist.
+Bei Interface implementierung erkennt der compiler das nur, wenn die Klasse der zu vergleichenden Referenz final ist.
 
 Wo beginnt und endet der Index bei String.substring(1,5)?
 start index inclusive, end index exclusive.
-
-Regeln um lambda syntax zu validieren:
-A: 
-There is a simple trick to identify invalid lambda constructs. When you write a lambda expression for a functional interface, you are essentially providing an implementation of the method declared in that interface but in a very concise manner.  Therefore, the lambda expression code that you write must contain all the pieces of the regular method code except the ones that the compiler can easily figure out on its own such as the parameter types, return keyword, and brackets. So, in a lambda expression, just check that all the information is there and that the expression follows the basic syntax - 
-
-(parameter list) OR single_variable_without_type -> { regular lines of code } OR just_an_expression_without_semicolon
-
-For a complete discussion on this topic please see this short tutorial - http://enthuware.com/index.php/home/115
-
-Muss man beim Predicate für lambda den Datentype per generics bekannt geben?
-A: Ja
-
-Wie erkennt man welcher Return Type eine numerische Berechnung hat? 
-immer den der größt benötigte in einer Konstanten oder dem Datentype der variable.
-Es kann aber immer nur int, long, float oder double sein.
-http://enthuware.com/forum/viewtopic.php?f=2&t=1800&p=4831&hilit=never#p4831
 
 Welche außnahme gibt es für if-Bedingung, wenn if(false) verwendet wird?
 A: Es ist möglich Variable ohne compilerfehler zuzuweisen, obwohl der code unreachable ist. Bei z.B while oder for geht das nicht.
