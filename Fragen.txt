@@ -1,4 +1,6 @@
 ###Fragen###
+weiter bei Zeile 117
+
 Was ist der Unterschied zwischen deklarieren, initialisieren und instanziieren?
 A: Deklarieren = Variable definieren (String s oder int number)
 Initialisierung = Wert zuweisen (String s = "s" oder int number = 1)
@@ -20,21 +22,18 @@ A: unveränderlich
 Können lokale Variablen in einer if bedingung initialisiert werden?
 A: Nein, da der compiler keine Bedingung auswertet, die Variablen sind daher nicht initialisert.
 
-Wo können continout verwendet werden?
+Wo können continue verwendet werden?
 A: while, do, for Schleife
 
-Welche Methoden hat String?
-A: 
-
 Kann einer float Variable ohne Probleme ein int zugewiesen werden?
-A: Nicht ohne Probleme, es kann einen Präzisionsverlust geben
+A: Nicht ohne Probleme, es kann einen Präzisionsverlust geben. Es gibt keinen compilation Fehler, lediglich während der Laufzeit können unerwartete Probleme auftreten.
 
 Ist folgendes erlaubt? if(false) ; else ;
 A: Ja, if else ohne Code und Klammer
 
 Welche primitiven Datentypen können gegenseitig zugewiesen werden, welche Bedingungen gibt es?
 A: byte, char, short, int haben sogenanntes implicit narrowing. Werte können nur gegenseitig zugwiesen werden wenn der Wert passt.
-Bsp: Ok: inal short s = 1; byte b = s;  Nicht Ok: final short s = 200; byte b = s;
+Bsp: Ok: final short s = 1; byte b = s;  Nicht Ok: final short s = 200; byte b = s;
 
 Funktioniert folgendes? short s = 1; byte b = s; 
 Nein, da short keine constante ist. Folgendes geht: final short s = 1; byte b = s;
@@ -60,7 +59,8 @@ Kann die main methode throws Exception deklarieren?
 A: Ja, jede Methode darf das.
 
 Was passiert genau wenn eine RuntimeException nicht gefangen wird?
-A:  The exception will propagate up the method invocation stack until some method handles it. If no one handles it then the exception will be handled by the JVM and the JVM will terminated that thread.
+A:  The exception will propagate up the method invocation stack until some method handles it. If no one handles it then the exception will be handled by the JVM 
+and the JVM will terminated that thread.
 
 Was tut der ~ Operator?
 A: Invertiert alle  bits. Also von z.B 0 auf 1.
@@ -77,7 +77,8 @@ A: Ja
 Was ist der TemporalAccessor in der Java 8 Date API?
 A: Das gemeinsame Interface von LocalDate, LocalTime und LocalDateTime. Nur Read Only Zugriff möglich.
 
-Kann auf einen protected member in einer Superklasse zugegriffen werden, wenn ein neues Objekt mit einer Referenz vom Typ der Superklasse innerhalbt der Subklasse erzeugt wird?
+Kann auf einen protected member in einer Superklasse zugegriffen werden, 
+wenn ein neues Objekt mit einer Referenz vom Typ der Superklasse innerhalbt der Subklasse erzeugt wird?
 A: Nein. Das ist eine Trick Question. Es erscheint als könnte man aufgrund der Vererbung auf die Superklasse zugreifen, geht aber nicht.
 
 Welche Klassen sind final, was bedeutet das?
@@ -349,3 +350,39 @@ A: double
 
 Wie ist das ISO Datums und Zeitformat?
 A: yyy-mm-dd z.B. 2011-12-03  und yyy-mm-ddThh:mm:ss z.B. 2011-12-03T10:15:30
+
+Was sind die Eigenschaften des args Array in der main methode?
+A: Der args Array ist niemals null, sondern hat bei keinem Argument die Länge 0.
+
+Erläuterung zu String conversion!
+A: Gilt für String Variablen und System.out.println
+Andere Datentypen können immer nur zu String konvertiert werden, wenn auch ein String vorkommt im Ausdruck. z.B. String b = "" + true; //ist ok
+Auch wenn eine Methode mit dem Rückgabetyp String einen null Wert zurück gibt, reicht der Typ zur konvertierung. Nur null würde jedoch nicht funktioniernen. String s = null + true //not ok
+Beschreibung:
+If one operand expression is of type String, then string conversion is performed on the other operand to produce a String at run time. The result is a reference to a newly created String object that is the concatenation of the two Strings. The characters of the left-hand operand precede the characters of the right-hand operand in the newly created string.
+Any type may be converted to type String by string conversion.
+A value x of primitive type T is first converted to a reference value as if by giving it as an argument to an appropriate class instance creation expression e.g. if T is boolean, then use new Boolean(x) .
+toString() is defined by the primordial class Object; many classes override it, notably Boolean, Character, Integer, Long, Float, Double, and String.
+
+Note that had there been a method like String getString() { return null; }, println( getString() + true ) etc. would have compiled fine and would have printed "nulltrue".
+
+Nenne StringBuilder API!
+A:
+
+Nenne String API!
+A:
+
+In welcher Reihenfolge wird int k = 1; k += (k = 4) * (k + 2); evaluiert?
+A: Zuerst wird der Wert vom compound operator += verwendet, dann wird k=4 zugwiesen und dann erst k+2 gerechnet, dh. k+2 wird 4+2.
+
+Nenne die definition von Exceptions!
+A: 
+There are multiple view points regarding checked and and unchecked exceptions. As per the official Java tutorial ( http://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html ) :  If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception.
+Here, the client basically means the caller of a method.
+
+Another way to look at exceptions is to see the cause of the exception in terms of whether it is internal or external to the program's code. For example, an incorrectly written code may try to access a reference pointing to null, or it may try to access an array beyond its length. These are internal sources of exception. Here, using runtime exceptions is appropriate because ideally these problems should be identified while testing and should not occur when the program is ready for deployment. 
+
+On the other hand, a program interacting with files may not be able to do its job at all if a file is not available but it should anticipate this situation. This is an external source of an exception and has nothing to do with a program's code as such. It is therefore appropriate to use a checked exception here.
+
+Ist folgendes erlaubt, was wäre das Ergebnis? System.out.println('b'+new Integer(63));
+A: Ja, char wird zu int promoted und verrechnet. Ergebnis: 98 + 63 = 161
