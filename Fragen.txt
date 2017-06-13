@@ -313,3 +313,39 @@ Welche außnahme gibt es für if-Bedingung, wenn if(false) verwendet wird?
 A: Es ist möglich Variable ohne compilerfehler zuzuweisen, obwohl der code unreachable ist. Bei z.B while oder for geht das nicht.
 Grund ist, dass der compiler solge statements automatisch entfernt zur optimierung für Productivcode mit if(DEBUG) mit DEBUG = false.
 
+In welcher Reihenfolge wird int i = 0; iA[i] = i = 30 ; verarbeitet?
+A: Es wird zuerst der Wert auf der linken Seite verarbeitet. iA[i] = i = 30; => iA[0] = i = 30 ;  =>  i = 30; iA[0] = i ; =>   iA[0] = 30 ;
+
+Wie weit ist der scope von Labels?
+A: Nur innerhalb des folgende Codeblocks. Wenn es kein geschweiften Klammern gibt, nur im nächsten Statement.
+
+Boolean Wrapper Regeln?
+A:
+You need to remember the following points about Boolean:
+
+1. Boolean class has two constructors - Boolean(String) and Boolean(boolean)
+The String constructor allocates a Boolean object representing the value true if the string argument is not null and is equal, ignoring case, to the string "true". Otherwise, allocate a Boolean object representing the value false. Examples: new Boolean("True") produces a Boolean object that represents true. new Boolean("yes") produces a Boolean object that represents false.
+
+The boolean constructor is self explanatory.
+
+2. Boolean class has two static helper methods for creating booleans - parseBoolean and valueOf.
+Boolean.parseBoolean(String ) method returns a primitive boolean and not a Boolean object (Note - Same is with the case with other parseXXX methods such as Integer.parseInt - they return primitives and not objects). The boolean returned represents the value true if the string argument is not null and is equal, ignoring case, to the string "true". 
+
+Boolean.valueOf(String ) and its overloaded Boolean.valueOf(boolean ) version, on the other hand, work similarly but return a reference to either Boolean.TRUE or Boolean.FALSE wrapper objects. Observe that they dont create a new Boolean object but just return the static constants TRUE or FALSE defined in Boolean class.
+
+3. When you use the equality operator ( == ) with booleans, if exactly one of the operands is a Boolean wrapper, it is first unboxed into a boolean primitive and then the two are compared (JLS 15.21.2). If both are Boolean wrappers, then their references are compared just like in the case of other objects. Thus, new Boolean("true") == new Boolean("true") is false, but new Boolean("true") == Boolean.parseBoolean("true") is true.
+
+Ist das final Keyword in einer for-loop erlaubt? (for(final Object o2 :c){ })
+A: Ja
+
+Was gibt getClass auf ein Objekt zurück? z.B List<String> list = new ArrayList<>(); list.getClass();
+A: Egal um welche Referenz es sich handelt, wird immer die Klasse vom Typ des aktuellen Objekt zurück gegeben. hier: class java.util.ArrayList
+
+Können Felder/statische Variablen in Interfaces mit dem gleichen Namen in mehreren Interfaces vorhanden sein?
+A: Ja. Es darf nur nicht mehrdeutig darauf zugegriffen werden, es muss vorher gecasted werden.
+
+Was für ein datentyp ist 43e1?
+A: double
+
+Wie ist das ISO Datums und Zeitformat?
+A: yyy-mm-dd z.B. 2011-12-03  und yyy-mm-ddThh:mm:ss z.B. 2011-12-03T10:15:30
