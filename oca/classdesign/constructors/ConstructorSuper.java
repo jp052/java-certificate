@@ -8,6 +8,8 @@ public class ConstructorSuper {
 		//Child c = new Child(); funktioniert nicht, da parent kein default constructor hat.
 		Child2 c2 = new Child2(); //funktioniert, da parent defaul constructor hat.
 		ChildWithConstructor cWihtConstructor = new ChildWithConstructor();
+		ChildWithConstructorArgument cWithConstructorArgument = new ChildWithConstructorArgument(1);
+		ChildWithConstructorArgument cWithConstructorArgument2 = new ChildWithConstructorArgument("hello");
 		
 	}
 }
@@ -38,7 +40,7 @@ class Child extends Parent {
 
 class Child2 extends ParentWithDefault {
 	public Child2() {
-		//super() wird hier automatisch eingefügt. Dieser Konstruktor kann auch weg gelassen werden, er wird automatisch generiert.
+		//super() wird hier automatisch eingefÃ¼gt. Dieser Konstruktor kann auch weg gelassen werden, er wird automatisch generiert.
 		System.out.println("Child2() ohne super");
 	}
 }
@@ -47,6 +49,18 @@ class ChildWithConstructor extends Parent {
 	public ChildWithConstructor() {
 		super(1);
 		System.out.println("ChildWithConstructor()");
+	}
+}
+
+class ChildWithConstructorArgument extends ParentWithDefault {
+	public ChildWithConstructorArgument(int i) {
+	    //super() wird automatisch aufgerufen
+		System.out.println("In ChildWithConstructor(int i) = " + i);
+	}
+	
+	public ChildWithConstructorArgument(String s) {
+	    //super() wird automatisch aufgerufen
+		System.out.println("In ChildWithConstructor(String s) = " + s);
 	}
 }
 
