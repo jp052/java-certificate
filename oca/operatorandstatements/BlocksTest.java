@@ -1,4 +1,9 @@
-public class BlocksTest {
+
+/**
+* Blocks can be used to encapsulate blocks of code within methods. 
+* If blocks are used outside of methods they are instance initilaizer blocks. More details: https://codesjava.com/instance-initializer-block-in-java
+**/
+public class BlocksTest 
 	public static void main(String[] args) {
 		BlocksTest block = new BlocksTest();
 		block.anonymousBlock();
